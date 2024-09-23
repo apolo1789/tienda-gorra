@@ -1,0 +1,251 @@
+<!DOCTYPE html> 
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="APOLO - Tienda de Gorras de lujo. Encuentra gorras exclusivas con opciones de personalización premium. Calidad y estilo para ti.">
+    <meta name="keywords" content="gorras de lujo, personalización, gorras exclusivas, APOLO, tienda de gorras">
+    <title>APOLO - Tienda de Gorras</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #000;
+            color: gold;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        header img {
+            width: 150px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-family: 'Times New Roman', serif;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #333;
+            padding: 10px;
+        }
+
+        nav a {
+            color: gold;
+            padding: 14px 20px;
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+
+        nav a:hover {
+            background-color: #555;
+        }
+
+        .banner {
+            background: url('https://via.placeholder.com/1200x400') no-repeat center center/cover;
+            height: 400px;
+            text-align: center;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .banner h2 {
+            font-size: 3em;
+        }
+
+        /* Product Section */
+        .container {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .products {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .product {
+            background-color: white;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            width: 30%;
+            transition: transform 0.3s;
+            cursor: pointer; /* Cambiado a puntero */
+        }
+
+        .product:hover {
+            transform: scale(1.05);
+        }
+
+        .product img {
+            width: 100%;
+            height: auto;
+        }
+
+        .product h3 {
+            margin: 10px 0;
+        }
+
+        .cta-button {
+            background-color: gold;
+            color: black;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            text-transform: uppercase;
+            transition: background-color 0.3s;
+        }
+
+        .cta-button:hover {
+            background-color: #333;
+            color: gold;
+        }
+
+        .promo {
+            background-color: gold;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .promo h2 {
+            margin: 0;
+        }
+
+        footer {
+            background-color: #333;
+            color: gold;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .cart-icon {
+            position: absolute;
+            right: 60px; /* Ajusta para espacio de WhatsApp */
+            top: 20px;
+            font-size: 24px;
+            color: gold;
+            cursor: pointer;
+        }
+
+        .whatsapp-icon {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            font-size: 24px;
+            color: green;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .products {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .product {
+                width: 80%;
+            }
+        }
+    </style>
+    <script>
+        let carrito = [];
+
+        function agregarAlCarrito(nombre, precio) {
+            carrito.push({ nombre, precio });
+            alert(nombre + " ha sido añadido al carrito por $" + precio + " COP.");
+        }
+
+        function verCarrito() {
+            let mensaje = "Productos en el carrito:\n";
+            carrito.forEach((producto, index) => {
+                mensaje += (index + 1) + ". " + producto.nombre + " - $" + producto.precio + " COP\n";
+            });
+            mensaje += "\n¿Deseas eliminar algún producto? Escribe el número del producto para eliminarlo o presiona Cancelar para cerrar.";
+            let eliminar = prompt(mensaje);
+            if (eliminar && !isNaN(eliminar) && eliminar <= carrito.length && eliminar > 0) {
+                carrito.splice(eliminar - 1, 1);
+                alert("Producto eliminado del carrito.");
+            }
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <img src="img/logo_apolo.webp" alt="Logo de Apolo">
+        <h1>APOLO - Tienda de Gorras</h1>
+        <span class="cart-icon" onclick="verCarrito()">🛒</span>
+        <a href="https://api.whatsapp.com/send?phone=3012773839" target="_blank">
+            <span class="whatsapp-icon">📞</span>
+        </a>
+    </header>
+    
+    <nav>
+        <a href="#home">Inicio</a>
+        <a href="#productos">Productos</a>
+        <a href="#personalizacion">Personalización</a>
+        <a href="#contacto">Contacto</a>
+    </nav>
+
+    <section class="banner">
+        <h2>Encuentra tu estilo exclusivo con APOLO</h2>
+    </section>
+
+    <section id="productos" class="container">
+        <h2>Nuestras Gorras de Lujo</h2>
+        <div class="products">
+            <div class="product">
+                <a href="producto1.html">
+                    <img src="https://via.placeholder.com/300" alt="Gorra Deportiva">
+                    <h3>Gorra Deportiva de Lujo</h3>
+                    <p>Perfecta para tu estilo activo. Disponible en colores exclusivos.</p>
+                    <p><strong>$49,999 COP</strong></p>
+                </a>
+                <button class="cta-button" onclick="agregarAlCarrito('Gorra Deportiva de Lujo', 49999); event.stopPropagation();">Compra ahora</button>
+            </div>
+            <div class="product">
+                <a href="producto2.html">
+                    <img src="https://via.placeholder.com/300" alt="Gorra de Moda">
+                    <h3>Gorra de Moda Exclusiva</h3>
+                    <p>Ideal para looks urbanos con un toque de lujo.</p>
+                    <p><strong>$59,999 COP</strong></p>
+                </a>
+                <button class="cta-button" onclick="agregarAlCarrito('Gorra de Moda Exclusiva', 59999); event.stopPropagation();">Compra ahora</button>
+            </div>
+            <div class="product">
+                <a href="producto3.html">
+                    <img src="https://via.placeholder.com/300" alt="Gorra Personalizada">
+                    <h3>Gorra Personalizada Premium</h3>
+                    <p>¡Crea tu propia gorra exclusiva con diseños de lujo!</p>
+                    <p><strong>$69,999 COP</strong></p>
+                </a>
+                <button class="cta-button" onclick="agregarAlCarrito('Gorra Personalizada Premium', 69999); event.stopPropagation();">Compra ahora</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="personalizacion" class="promo">
+        <h2>¡Personaliza tu gorra de lujo con nosotros!</h2>
+        <p>En APOLO ofrecemos opciones de personalización premium para que puedas crear una gorra exclusiva. ¡Elige tu diseño y nosotros lo hacemos realidad!</p>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 APOLO. Todos los derechos reservados.</p>
+        <p>Contacto: info@apolostore.com | Teléfono: 123-456-7890</p>
+    </footer>
+</body>
+</html>
